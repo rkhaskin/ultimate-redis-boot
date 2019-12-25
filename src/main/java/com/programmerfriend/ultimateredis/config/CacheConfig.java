@@ -1,6 +1,12 @@
 package com.programmerfriend.ultimateredis.config;
 
-import lombok.extern.slf4j.Slf4j;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
@@ -13,15 +19,13 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @EnableConfigurationProperties(CacheConfigurationProperties.class)
 @Slf4j
 public class CacheConfig extends CachingConfigurerSupport {
+	final Logger log = LoggerFactory.getLogger(CacheConfig.class);
 
     private static RedisCacheConfiguration createCacheConfiguration(long timeoutInSeconds) {
         return RedisCacheConfiguration.defaultCacheConfig()

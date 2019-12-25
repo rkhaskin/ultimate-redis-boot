@@ -1,6 +1,9 @@
 package com.programmerfriend.ultimateredis;
 
 import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +16,7 @@ import java.util.UUID;
 @SpringBootApplication
 @Slf4j
 public class UltimateRedisApplication implements CommandLineRunner {
+	final Logger log = LoggerFactory.getLogger(UltimateRedisApplication.class);
 
     @Autowired
     CacheService cacheService;
